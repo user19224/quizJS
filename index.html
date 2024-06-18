@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="quiz-container">
+        
+        <h2 id="question-number">Вопрос 1/4</h2>
+            
+         <p id="question-text">Назовите столицу Франции?</p>
+            
+        <div id="answer-buttons" class="btn-container">
+                <button class="btn">Нью-Йорк</button>
+                <button class="btn">Лондон</button>
+                <button class="btn">Париж</button>
+                <button class="btn">Минск</button>
+        
+        </div>
+            
+            <button id="back-button" class = "btn"">Назад</button>
+            <button id="next-button" class="btn" disabled>Продолжить</button>
+            
+        
+    <div id="result-container" class="hidden">
+            <h2>Ваш счет</h2>
+            <p id="score"></p>
+            <button id="restart-button" class="btn">Заново</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
