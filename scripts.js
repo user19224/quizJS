@@ -49,7 +49,7 @@ function showQuestions(){
         questions.answers.forEach(() => {
             const button  = document.createElement('button')
             button.classList.add('btn')
-            button.textContent = 
+            button.textContent 
 
         });
         
