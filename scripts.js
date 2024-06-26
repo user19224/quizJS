@@ -1,4 +1,4 @@
-import { questions } from "./constants.js";
+import { questions, selectedAnswers } from "./constants.js";
 
 const questionNumberElement = document.getElementById('question-number');
 const questionTextElement = document.getElementById("question-text");
@@ -15,7 +15,9 @@ let score = 0;
 function startQuiz() {
     questionIndex = 0;
     score = 0;
+    selectedAnswers.fill(null); // сброс выбранных ответов
     resultContainer.classList.add("hidden");
+    scoreElement.textContent = "";
     questionNumberElement.classList.remove("hidden");
     questionTextElement.classList.remove("hidden");
     answerButtonsElement.classList.remove("hidden");
@@ -35,19 +37,26 @@ function showQuestion() {
         const button = document.createElement('button');
         button.classList.add('btn');
         button.textContent = answer;
-        button.addEventListener("click", () => selectAnswer(index));
+        if (selectedAnswers[questionIndex] === index) {
+            button.classList.add('selected'); // выделяем кнопку, если этот ответ уже был выбран
+        }
+        button.addEventListener("click", () => selectAnswer(index, button));
         answerButtonsElement.appendChild(button);
     });
 
-    nextButton.disabled = true;
+    nextButton.disabled = selectedAnswers[questionIndex] === null; // активируем кнопку "Продолжить", если ответ выбран
 }
 
-function selectAnswer(index) {
-    const question = questions[questionIndex];
-    if (index === question.correct) {
+function selectAnswer(index, button) {
+    selectedAnswers[questionIndex] = index;
+    answerButtonsElement.querySelectorAll('.btn').forEach(btn => {
+        btn.classList.remove('selected'); // убираем выделение со всех кнопок
+    });
+    button.classList.add('selected'); // выделяем выбранную кнопку
+    nextButton.disabled = false;
+    if (index === questions[questionIndex].correct) {
         score++;
     }
-    nextButton.disabled = false;
 }
 
 function showNextQuestion() {
@@ -65,12 +74,19 @@ function showResults() {
     answerButtonsElement.classList.add("hidden");
     backButton.classList.add("hidden");
     nextButton.classList.add("hidden");
-
     resultContainer.classList.remove("hidden");
     scoreElement.textContent = `${score} из ${questions.length}`;
 }
 
+function showBackQuestion() {
+    questionIndex--;
+    if (questionIndex >= 0) {
+        showQuestion();
+    }
+}
+
 nextButton.addEventListener('click', showNextQuestion);
 restartButton.addEventListener("click", startQuiz);
+backButton.addEventListener("click", showBackQuestion);
 
 startQuiz();

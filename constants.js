@@ -1,9 +1,3 @@
-
-
-export const QUESTION_INDEX = 0;
-export const SCORE = 0;
-
-
 export const questions = [
     {
         question: "Назовите столицу Франции?",
@@ -26,3 +20,5 @@ export const questions = [
         correct: 1
     }
 ];
+
+export const selectedAnswers = Array(questions.length).fill(null);
