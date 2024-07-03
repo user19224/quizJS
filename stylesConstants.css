@@ -1,0 +1,18 @@
+
+:root{
+    --body-bg-color-start: #4facfe;
+    --body-bg-color-end: #00f2fe;
+
+    --container-bg: rgba(255,255,255,0.9);
+
+    --btn-bg: #1e3c72;
+    --btn-color:white;
+    --btn-hover-bg:#2a5298;
+
+    --selected-bg:#6081ba;
+    --selected-border:#181717;
+    --selected-color:#ffffff;
+
+    --btn-disabled-bg:#ccc;
+    --btn-disabled-color:#666;
+}
