@@ -22,3 +22,5 @@ export const questions = [
 ];
 
 export const selectedAnswers = Array(questions.length).fill(null);
+export let questionIndex = 0;
+export let score = 0;
