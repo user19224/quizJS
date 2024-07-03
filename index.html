@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Quiz Application</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesConstants.css">
 </head>
 <body>
     <div id="quiz-container">
@@ -29,7 +30,20 @@
             <p id="score"></p>
             <button id="restart-button" class="btn">Заново</button>
     </div>
+    <div id="progress-bar-container">
+            <div id = "progress-bar"></div>
+    </div>
+
+    <div id="result-modal" class="modal hidden">
+            <div class="modal content">
+                <span class="close-button">&times;</span>
+                <h2>Ваш результат</h2>
+                <p id="modal-score"></p>
+                <button id = "modal-restart-button" class="btn">Заново</button>
+            </div>   
+    </div>
     </div>
     <script type = "module" src="scripts.js"></script>
+    <script src="constants.js" type="module"></script>
 </body>
 </html>
