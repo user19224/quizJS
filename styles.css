@@ -1,15 +1,14 @@
 body {
-    background: linear-gradient(to bottom right, #4facfe, #04eefa);
+    background: linear-gradient(to bottom right, var(--body-bg-color-start), var(--body-bg-color-end));
     font-family: 'Times New Roman', Times;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
 }
 
 #quiz-container {
-    background: hsl(0, 0%, 100%);
+    background: var(--container-bg);
     border-radius: 20px;
     padding: 10px;
     width: 400px;
@@ -20,22 +19,29 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin: 20px ;
+    margin: 20px;
 }
 
 .btn {
-    background: #1e3c72;
-    color: white;
+    background: var(--btn-bg);
+    color: var(--btn-color);
     border: none;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     font-size: 17px;
-    
+    transition: background 0.3s,transform 0.2s;
 }
 
 .btn:hover {
     background: #2a5298;
+    transform: scale(1.05);
+}
+
+.btn:disabled {
+    background: var(--btn-disabled-bg);
+    color: var(--btn-disabled-color);
+    cursor: not-allowed;
 }
 
 #back-button {
@@ -43,13 +49,76 @@ body {
     width: 100px;
 }
 
-#next-button{
+#next-button {
     margin: 10px;
     width: 115px;
 }
-.selected{
-    background: #6081ba;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    
+
+.selected {
+    background: var(--selected-bg);
+    border: 2px solid var(--selected-border);
+    color: var(--selected-color);
+}
+
+html, body {
+    overflow-y: hidden;
+}
+
+
+#progress-bar-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+#progress-bar {
+    height: 20px;
+    width: 0;
+    background: var(--btn-bg);
+    border-radius: 10px;
+    transition: width 0.3s;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
